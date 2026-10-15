@@ -156,14 +156,6 @@ button {
   transform: none;
 }
 
-.reveal.visible {
-  animation: reveal-in 0.65s ease;
-}
-
-@keyframes reveal-in {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 
 /* --- Focus visible --- */
 :focus-visible {

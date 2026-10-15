@@ -1,0 +1,42 @@
+<div id="welcome-intro" class="welcome-intro" hidden aria-label="Welcome to Morm Kimheng’s portfolio">
+  <div class="welcome-center" aria-hidden="true">
+    <span class="welcome-word khmer" lang="km">សូមស្វាគមន៍</span>
+    <span class="welcome-word english" lang="en">Welcome</span>
+    <span class="welcome-word chinese" lang="zh-Hans">欢迎</span>
+  </div>
+  <span class="welcome-signature">MORM KIMHENG <span>·</span> PORTFOLIO</span>
+  <button id="welcome-skip" type="button">Skip intro ↗</button>
+</div>
+<script is:inline>
+  (() => {
+    const intro = document.getElementById('welcome-intro');
+    if (!intro || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    try { if (sessionStorage.getItem('kimheng-welcomed')) return; } catch {}
+    intro.hidden = false;
+    document.documentElement.classList.add('welcome-playing');
+    const finish = () => {
+      intro.hidden = true;
+      document.documentElement.classList.remove('welcome-playing');
+      try { sessionStorage.setItem('kimheng-welcomed', '1'); } catch {}
+      document.dispatchEvent(new Event('portfolio-ready'));
+    };
+    document.getElementById('welcome-skip').addEventListener('click', finish);
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') finish(); }, { once: true });
+    setTimeout(finish, 2900);
+  })();
+</script>
+<style>
+  .welcome-intro { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: #0b0c0b; color: #f5f0e8; animation: intro-exit .65s cubic-bezier(.76,0,.24,1) 2.25s forwards; }
+  .welcome-intro[hidden] { display: none; }
+  .welcome-center { display: grid; place-items: center; width: 100%; padding: 24px; }
+  .welcome-word { grid-area: 1 / 1; text-align: center; font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 600; letter-spacing: -.04em; opacity: 0; animation: greeting .85s ease both; line-height: 1.7; }
+  .khmer { font-family: 'Noto Sans Khmer', sans-serif; letter-spacing: 0; }
+  .english { animation-delay: .75s; }
+  .chinese { animation-delay: 1.5s; font-family: 'Noto Sans SC', sans-serif; }
+  .welcome-signature { position: absolute; left: 32px; bottom: 32px; color: #b4b5ab; font-size: 10px; letter-spacing: 2px; }
+  .welcome-signature span { color: #e5d36b; margin: 0 8px; }
+  #welcome-skip { position: absolute; right: 32px; bottom: 28px; color: #e1e1d9; border: 1px solid #41433c; padding: 10px 15px; border-radius: 30px; font-size: 12px; background: transparent; cursor: pointer; }
+  @keyframes greeting { 0% { opacity: 0; transform: translateY(20px); filter: blur(5px); } 25%,75% { opacity: 1; transform: translateY(0); filter: blur(0); } 100% { opacity: 0; transform: translateY(-15px); filter: blur(3px); } }
+  @keyframes intro-exit { to { transform: translateY(-100%); visibility: hidden; } }
+  @media (max-width: 480px) { .welcome-signature { left: 20px; font-size: 8px; letter-spacing: 1px; } #welcome-skip { right: 20px; } }
+</style>
