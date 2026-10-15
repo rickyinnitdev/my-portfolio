@@ -29,7 +29,6 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* --- Typography --- */
@@ -151,6 +150,14 @@ button {
 }
 
 /* --- Scroll reveal --- */
+html:not(.theme-ready) *, html:not(.theme-ready) *::before, html:not(.theme-ready) *::after {
+  transition: none !important;
+}
+
+html.theme-changing *, html.theme-changing *::before, html.theme-changing *::after {
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease !important;
+}
+
 .reveal {
   opacity: 1;
   transform: none;

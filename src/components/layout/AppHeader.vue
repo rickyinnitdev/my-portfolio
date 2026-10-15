@@ -32,6 +32,7 @@
         <!-- Theme toggle button -->
         <button
           class="theme-toggle"
+          :style="{ visibility: themeReady ? 'visible' : 'hidden' }"
           :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
           @click="toggleTheme"
         >
@@ -101,7 +102,7 @@ import { useTheme } from '../../composables/useTheme.js'
 const props = defineProps({ currentPath: { type: String, default: '/' } })
 const isScrolled = ref(false)
 const menuOpen = ref(false)
-const { isDark, toggleTheme } = useTheme()
+const { isDark, themeReady, toggleTheme } = useTheme()
 
 const navLinks = [
   { to: '/', label: 'Home' },

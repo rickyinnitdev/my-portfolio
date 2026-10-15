@@ -2,6 +2,8 @@ import { ref, onMounted } from 'vue'
 
 // Shared reactive state (module-level singleton)
 const isDark = ref(true)
+const themeReady = ref(false)
+let transitionTimer
 
 export function useTheme() {
   function applyTheme(dark) {
@@ -11,21 +13,20 @@ export function useTheme() {
   }
 
   function toggleTheme() {
+    document.documentElement.classList.add('theme-changing')
     applyTheme(!isDark.value)
+    clearTimeout(transitionTimer)
+    transitionTimer = setTimeout(() => document.documentElement.classList.remove('theme-changing'), 250)
   }
 
   function initTheme() {
-    let saved
-    try { saved = localStorage.getItem('kimheng-theme') } catch {}
-    if (saved === 'dark' || saved === 'light') {
-      applyTheme(saved === 'dark')
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      applyTheme(prefersDark)
-    }
+    // The head script already applied the theme before the page painted.
+    isDark.value = document.documentElement.dataset.theme === 'dark'
+    themeReady.value = true
+    requestAnimationFrame(() => document.documentElement.classList.add('theme-ready'))
   }
 
   onMounted(initTheme)
 
-  return { isDark, toggleTheme, initTheme }
+  return { isDark, themeReady, toggleTheme, initTheme }
 }

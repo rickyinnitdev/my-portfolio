@@ -29,6 +29,11 @@ export function useScrollReveal(selector = '.reveal') {
     )
 
     document.querySelectorAll(selector).forEach((el) => {
+      // Already-painted content should never disappear when hydration starts.
+      if (el.getBoundingClientRect().top < window.innerHeight) {
+        el.classList.add('visible')
+        return
+      }
       observer.observe(el)
     })
   }
