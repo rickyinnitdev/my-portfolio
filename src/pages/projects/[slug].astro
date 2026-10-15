@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/BaseLayout.astro';
+import ProjectDetail from '../../views/ProjectDetailView.vue';
+import { projects } from '../../data/projects.js';
+export function getStaticPaths() { return projects.map(project => ({ params: { slug: project.slug }, props: { project } })); }
+const { project } = Astro.props;
+---
+<Layout title={project.title + ' — Morm Kimheng'} description={project.shortDescription} image={project.thumbnail}>
+  <ProjectDetail slug={project.slug} client:load />
+</Layout>
