@@ -27,7 +27,10 @@
             <a :href="personal.socials.telegram" target="_blank" rel="noopener" class="footer-link">Telegram</a>
             <a :href="personal.socials.facebook" target="_blank" rel="noopener" class="footer-link">Facebook</a>
             <a :href="personal.socials.github" target="_blank" rel="noopener" class="footer-link">GitHub</a>
-            <a href="/links" class="footer-link">All links & QR</a>
+            <a href="/links" class="footer-qr" aria-label="Open all my links or scan this QR code">
+              <img src="/kimheng-links-qr.svg" alt="QR code for Kimheng’s social links" width="104" height="104" loading="lazy" />
+              <span>Scan to connect</span>
+            </a>
           </div>
         </div>
       </div>
@@ -117,6 +120,28 @@ const navLinks = [
 }
 
 .footer-link:hover { color: var(--text); }
+
+.footer-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  text-decoration: none;
+}
+
+.footer-qr img {
+  display: block;
+  width: 104px;
+  height: 104px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.footer-qr:hover { color: var(--text); }
 
 .footer-bottom { margin-top: var(--space-6); }
 
