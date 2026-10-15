@@ -26,6 +26,8 @@
             <a href="mailto:m.kimheng.dev@gmail.com" class="footer-link">Email</a>
             <a :href="personal.socials.telegram" target="_blank" rel="noopener" class="footer-link">Telegram</a>
             <a :href="personal.socials.facebook" target="_blank" rel="noopener" class="footer-link">Facebook</a>
+            <a :href="personal.socials.github" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+            <a href="/links" class="footer-link">All links & QR</a>
           </div>
         </div>
       </div>

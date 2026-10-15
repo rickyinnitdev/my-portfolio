@@ -6,6 +6,7 @@ export const personal = {
   location: 'Phnom Penh, Cambodia',
   email: 'm.kimheng.dev@gmail.com',
   socials: {
+    github: 'https://github.com/rickyinnitdev',
     facebook: 'https://web.facebook.com/rixkyz/',
     telegram: 'https://t.me/rickyinnitz',
   },
