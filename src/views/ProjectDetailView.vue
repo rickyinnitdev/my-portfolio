@@ -52,6 +52,16 @@
 
       <!-- Story sections -->
       <div class="detail-body">
+        <div class="story-block reveal" v-if="project.features?.length">
+          <h2 class="story-heading">What it does</h2>
+          <ul class="contribution-list">
+            <li v-for="feature in project.features" :key="feature">{{ feature }}</li>
+          </ul>
+        </div>
+        <div class="story-block reveal" v-if="project.results">
+          <h2 class="story-heading">Results</h2>
+          <p>{{ project.results }}</p>
+        </div>
         <div class="story-block reveal" v-if="project.contributions?.length">
           <h2 class="story-heading">My contribution</h2>
           <ul class="contribution-list">

@@ -1,5 +1,24 @@
 export const projects = [
   {
+    id: 'khqr-payment-integration', slug: 'khqr-payment-integration',
+    title: 'KHQR Payment Integration', year: 2026, category: 'web',
+    type: 'Personal Project · Payment Integration', status: 'Live payments tested', featured: true,
+    role: 'JavaScript Developer',
+    shortDescription: 'A reusable JavaScript payment integration for live KHQR payments through Bakong, with a responsive checkout and automatic confirmation.',
+    fullDescription: 'I built this project to learn how KHQR payment integration works with the Bakong Open API. It combines a reusable server-side JavaScript module with a responsive checkout interface and SQLite payment records. The module can be reused in Node.js and Next.js projects, with demo and live modes and API credentials kept on the server.',
+    features: [
+      'Generates dynamic KHQR codes with payment amounts and expiry times.',
+      'Verifies the receiving account, amount, and currency server-side.',
+      'Automatically checks payment status every 15 seconds.',
+      'Stores payment records in SQLite and prevents duplicate transaction reuse.',
+      'Supports separate demo and live modes while keeping API credentials on the server.',
+      'Provides a reusable module for Node.js and Next.js projects.'
+    ],
+    results: 'Successfully tested live payments and passed 8 automated tests covering payment verification, expiry, access control, duplicate protection, and concurrent checks.',
+    technologies: ['JavaScript', 'Node.js', 'SQLite', 'Bakong Open API', 'HTML / CSS'],
+    thumbnail: '/images/projects/khqr-payment-integration.svg', gallery: []
+  },
+  {
     id: 'neang-neath', slug: 'neang-neath', title: 'Neang Neath', year: 2026,
     category: 'game', type: 'Personal Project · Roblox Horror Game', status: 'Demo pending', featured: true,
     shortDescription: 'A story-driven Roblox horror game set around a Khmer household, with cooperative roles, ritual puzzles, and ghost encounters. Demo pending.',
